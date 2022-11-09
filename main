@@ -1,0 +1,78 @@
+#include <iostream>
+#include <locale.h>
+using namespace std;
+
+//código de teste: 9782940199617
+
+int main (){
+  setlocale (LC_ALL,"portuguese");
+
+long long int barcode;
+    int dig_ver,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12, soma, digit;
+
+    cout<<"Insira o código de barras:\n";
+    cin>>barcode;
+
+    //Verificação da quantia de digitos
+if (barcode > 9999999999999 or barcode < 1000000000000){
+      cout<<"Código invalido!(Inconsistência de caracteres)";
+     }else {
+
+     //Separação dos dígitos:
+    dig_ver=barcode%10;
+    barcode=(barcode-dig_ver)/10;
+    d1=barcode%10;
+    barcode=(barcode-d1)/10;
+    d2=barcode%10;
+    barcode=(barcode-d2)/10;
+    d3=barcode%10;
+    barcode=(barcode-d3)/10;
+    d4=barcode%10;
+    barcode=(barcode-d4)/10;
+    d5=barcode%10;
+    barcode=(barcode-d5)/10;
+    d6=barcode%10;
+    barcode=(barcode-d6)/10;
+    d7=barcode%10;
+    barcode=(barcode-d7)/10;
+    d8=barcode%10;
+    barcode=(barcode-d8)/10;
+    d9=barcode%10;
+    barcode=(barcode-d9)/10;
+    d10=barcode%10;
+    barcode=(barcode-d10)/10;
+    d11=barcode%10;
+    barcode=(barcode-d11)/10;
+    d12=barcode%10;
+    barcode=(barcode-d12)/10;
+
+    if (dig_ver>9){
+        dig_ver=0;
+    }
+
+    //Múltiplicação das variáveis ímpares
+    d11 = 3 * d11;
+    d9 = 3 * d9;
+    d7 = 3 * d7;
+    d5 = 3 * d5;
+    d3 = 3 * d3;
+    d1 = 3 * d1;
+
+    //Cálculo do dígito verificador
+
+    soma = d1+d2+d3+d4+d5+d6+d7+d8+d9+d10+d11+d12;
+
+    digit = (soma /10 +1)*10 - soma;
+
+    // Retorno em relação a verificação do código
+    if (digit == dig_ver){
+        cout << "O código está CORRETO";
+    } else{
+        cout<< "O código verificador está inconsistente.";
+    }
+
+     }
+  return 0;
+}
+
+//Código feito por: Matheus Timm, Cleiton Prange, Amandy da Silva, Bianca Camila Correa.
